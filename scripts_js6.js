@@ -141,7 +141,7 @@ for (const emp of parsedEmployees) {
 // Create an external JSON file that will contain the data( e.g.
 // `{'title': 'Javascript for Dummies',
 // 'author': 'Dummy Dumb Dumb',
-// 'read': 'false'
+// 'read': false
 // }`
 
 let bookList = `
@@ -183,29 +183,27 @@ let bookList = `
 
 let parsedBooklist = JSON.parse(bookList);
 console.log(parsedBooklist);
+
 // 1. Iterate through the array of books. For each book, create a <p>
 // element with the book title and author and append it to the page.
 
 // 2. Each book should have an image cover.
 
-for (const book of parsedBooklist) {
-  let para = book.read ? "<p class='bg-success'>Reading completed</p>" : "";
-
-  // color = book.read ? "success" : "danger";
-  document.getElementById("booklist").innerHTML += `
-<div class="m-2 border border-dark border-2">
-<p><img src="${book.cover}" alt="" class="me-3"</img> ${book.title} (${book.author}, ${book.pages} pages)</p>
-${para}
-</div>
-`;
-}
-
 // 3. Change the style of the book depending on whether you have read it or not
-// const books = document.querySelectorAll(".read");
-// console.log(books);
 
-// books.forEach((element, index) => {
-//   if (parsedBooklist[index].read == true) {
-//     element.textContent = "Reading completed";
-//   }
-// });
+for (const book of parsedBooklist) {
+  //   let readMarker = book.read ? "<p class='bg-success'>Reading completed</p>" : "";
+  let readMarker = "<p></p>";
+  if (book.read == true) {
+    readMarker = "<p class='bg-success text-light ps-2'>Reading completed</p>";
+  }
+
+  const bookListAnchor = document.getElementById("booklist");
+
+  bookListAnchor.innerHTML += `
+    <div class="m-2 border border-dark border-2">
+    <p><img src="${book.cover}" alt="" class="me-3"</img> ${book.title} (${book.author}, ${book.pages} pages)</p>
+    ${readMarker}
+    </div>
+    `;
+}
