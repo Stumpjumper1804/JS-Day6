@@ -135,3 +135,50 @@ for (const emp of parsedEmployees) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
+
+// Advanced Exercise 1: Book List
+
+// Create an external JSON file that will contain the data( e.g.
+// `{'title': 'Javascript for Dummies',
+// 'author': 'Dummy Dumb Dumb',
+// 'read': 'false'
+// }`
+
+let bookList = `
+[{
+    "title": "JavaScript for Dummies",
+    "author": "T. H. Kirk",
+    "pages": "230"
+    "read": "false"
+},
+{
+    "title": "Node.js for Dummies",
+    "author": "Adam Young",
+    "pages": "200"
+    "read": "false"
+},
+{
+    "title": "HTML5/CSS3 for Dummies",
+    "author": "Michael Jackson",
+    "pages": "450"
+    "read": "false"
+},
+{
+    "title": "Python for Dummies",
+    "author": "Neil Skern",
+    "pages": "320"
+    "read": "false"
+},
+{
+    "title": "Java for Dummies",
+    "author": "Jabba da Hut",
+    "pages": "670"
+    "read": "false"
+}]`;
+
+// 1. Iterate through the array of books. For each book, create a <p>
+// element with the book title and author and append it to the page.
+
+// 2. Each book should have an image cover.
+// 3. Change the style of the book depending on whether you have read it
+// or not
