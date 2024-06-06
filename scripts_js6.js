@@ -148,37 +148,64 @@ let bookList = `
 [{
     "title": "JavaScript for Dummies",
     "author": "T. H. Kirk",
-    "pages": "230"
-    "read": "false"
+    "pages": 230,
+    "read": false,
+    "cover": "bookcover.jpg"
 },
 {
     "title": "Node.js for Dummies",
     "author": "Adam Young",
-    "pages": "200"
-    "read": "false"
+    "pages": 200,
+    "read": true,
+    "cover": "bookcover.jpg"
 },
 {
     "title": "HTML5/CSS3 for Dummies",
     "author": "Michael Jackson",
-    "pages": "450"
-    "read": "false"
+    "pages": 450,
+    "read": false,
+    "cover": "bookcover.jpg"
 },
 {
     "title": "Python for Dummies",
     "author": "Neil Skern",
-    "pages": "320"
-    "read": "false"
+    "pages": 320,
+    "read": true,
+    "cover": "bookcover.jpg"
 },
 {
     "title": "Java for Dummies",
     "author": "Jabba da Hut",
-    "pages": "670"
-    "read": "false"
+    "pages": 670,
+    "read": false,
+    "cover": "bookcover.jpg"
 }]`;
 
+let parsedBooklist = JSON.parse(bookList);
+console.log(parsedBooklist);
 // 1. Iterate through the array of books. For each book, create a <p>
 // element with the book title and author and append it to the page.
 
 // 2. Each book should have an image cover.
-// 3. Change the style of the book depending on whether you have read it
-// or not
+
+for (const book of parsedBooklist) {
+  let para = book.read ? "<p class='bg-success'>Reading completed</p>" : "";
+
+  // color = book.read ? "success" : "danger";
+  document.getElementById("booklist").innerHTML += `
+<div class="m-2 border border-dark border-2">
+<p><img src="${book.cover}" alt="" class="me-3"</img> ${book.title} (${book.author}, ${book.pages} pages)</p>
+${para}
+</div>
+`;
+}
+
+// 3. Change the style of the book depending on whether you have read it or not
+// const books = document.querySelectorAll(".read");
+// console.log(books);
+
+// books.forEach((element, index) => {
+//   if (parsedBooklist[index].read == true) {
+//     element.textContent = "Reading completed";
+//   }
+// });
